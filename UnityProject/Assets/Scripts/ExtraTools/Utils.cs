@@ -43,6 +43,15 @@ namespace ExtraTools
             return component;
         }
 
+        public static bool GetComponent<T>(this Transform t, out T component, bool needWarning = false)
+        {
+            component = t.GetComponent<T>();
+            if (component == null && needWarning)
+                Debug.LogWarning(string.Format("{0} does not have a component of type {1}!", t.name, typeof(T)));
+
+            return component != null;
+        }
+
 #if UNITY_EDITOR
 
         /// <summary>
