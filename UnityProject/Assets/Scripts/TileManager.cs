@@ -10,9 +10,9 @@ public class TileManager : MonoBehaviour
     [SerializeField]
     Vector3 spawnPosition;
     [SerializeField]
-    private float speed = 1f;
+    private float speed = 5f;
     private bool animate = false;
-
+    IEnumerator currentCorutine = null;
 
     void Start()
     {
@@ -33,16 +33,28 @@ public class TileManager : MonoBehaviour
     {
         Debug.Log("Trigger enter");
         Tile.SetActive(true);
-        StartCoroutine(MoveObject(Tile.transform, spawnPosition, Vector3.zero));
+        if(currentCorutine!=null)
+        {
+            StopCoroutine(currentCorutine);
+        }
+        StartCoroutine(MoveObject(Tile.transform, spawnPosition, Vector3.zero,true));
     }
 
+
+    
     private void OnTriggerExit(Collider other)
     {
         Tile.SetActive(false);
+        if (currentCorutine != null)
+        {
+            StopCoroutine(currentCorutine);
+        }
+        StartCoroutine(MoveObject(Tile.transform, Tile.transform.localPosition, spawnPosition, false));
     }
 
-    private IEnumerator MoveObject(Transform thisTransform, Vector3 startPos, Vector3 endPos)
+    private IEnumerator MoveObject(Transform thisTransform, Vector3 startPos, Vector3 endPos, bool finalState)
     {
+        thisTransform.gameObject.SetActive(true);
         float i = 0.0f;
         while (i < 1.0f)
         {
@@ -51,6 +63,7 @@ public class TileManager : MonoBehaviour
             Debug.Log(thisTransform.localPosition + " Pos");
             yield return null;
         }
+        thisTransform.gameObject.SetActive(finalState);
        
     }
 }

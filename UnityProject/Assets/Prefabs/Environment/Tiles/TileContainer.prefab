@@ -140,4 +140,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tile: {fileID: 3682968023895175043}
   spawnPosition: {x: 0, y: 6, z: 0}
-  speed: 1
+  speed: 5
