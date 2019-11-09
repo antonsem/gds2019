@@ -17,6 +17,6 @@ MonoBehaviour:
   moveSpeed: 10
   attacks: []
   canMove: 1
-  energyConsumption: 0
+  energyConsumption: 1
   baseEnergyConsumption: 1
   companions: []
