@@ -3,6 +3,7 @@
     "com.mybox": "https://github.com/Deadcows/MyBox.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
+    "com.unity.cinemachine": "2.3.4",
     "com.unity.progrids": "3.0.3-preview.4",
     "com.unity.render-pipelines.universal": "7.1.2",
     "com.unity.shadergraph": "7.1.2",
