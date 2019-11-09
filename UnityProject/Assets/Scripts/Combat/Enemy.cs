@@ -17,7 +17,7 @@ public class Enemy : Character
 
     public virtual void Attack(Action<int> callback = null)
     {
-        //start coroutine
+        CoroutineStarter.Instance.StartCoroutine(AttackCoroutine(callback));
     }
 
     private IEnumerator AttackCoroutine (Action<int> callback)

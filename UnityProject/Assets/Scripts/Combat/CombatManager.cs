@@ -11,9 +11,18 @@ public class CombatManager : MonoBehaviour
     private PlayerStats playerStats;
     [SerializeField]
     private float chanceForEnemyToStart = 0.1f;
+    [SerializeField]
+    private Action playerDies;
+    [SerializeField]
+    private Action enemyDies;
 
-    public void Fight()
+    public void Fight(PlayerStats playerStats, Enemy enemy, Action playerDies, Action enemyDies)
     {
+        this.playerStats = playerStats;
+        this.enemy = enemy;
+        this.playerDies = playerDies;
+        this.enemyDies = enemyDies;
+
         if (UnityEngine.Random.Range(0, 1) <= chanceForEnemyToStart)
             EnemyAttacks();
 
@@ -33,6 +42,8 @@ public class CombatManager : MonoBehaviour
         int damage = UnityEngine.Random.Range(chosenAttack.lowerRange, chosenAttack.upperRange + 1);
 
         enemy.TakeDamage(damage);
+        if (!enemy.CanAttack())
+            enemyDies.Invoke();
     }
 
     private void EnemyAttacks()
@@ -48,7 +59,7 @@ public class CombatManager : MonoBehaviour
     {
         playerStats.Energy -= damage;
         if (playerStats.Energy <= 0)
-            PlayerDies();
+            playerDies?.Invoke();
     }
 
     private Attack ChooseAttack(List<Attack> attacks)
@@ -56,10 +67,5 @@ public class CombatManager : MonoBehaviour
         //TODO
         Debug.Log("TODO");
         return attacks[0];
-    }
-
-    private void PlayerDies()
-    {
-
     }
 }
