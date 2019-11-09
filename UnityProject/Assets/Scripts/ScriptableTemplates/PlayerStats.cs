@@ -32,6 +32,8 @@ public class PlayerStats : ScriptableObject
                 Events.Instance.gameOver.Invoke();
 
             energy = Mathf.Clamp(value, 0, MaxEnergy);
+
+            Events.Instance.energyUpdated.Invoke(energy);
         }
     }
     public float MaxEnergy { get => maxEnergy; set => maxEnergy = value; }
