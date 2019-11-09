@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   maxEnergy: 100
-  energy: 98.71592
+  energy: 70.138084
   moveSpeed: 10
   attacks: []
   canMove: 1
