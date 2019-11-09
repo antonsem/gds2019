@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "com.mybox": "https://github.com/Deadcows/MyBox.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
+    "com.unity.progrids": "3.0.3-preview.4",
     "com.unity.render-pipelines.universal": "7.1.2",
     "com.unity.shadergraph": "7.1.2",
     "com.unity.textmeshpro": "2.0.1",
@@ -38,5 +40,11 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.mybox": {
+      "revision": "HEAD",
+      "hash": "81243043984f6f72aeacc24cf37ebf781273db09"
+    }
   }
 }
