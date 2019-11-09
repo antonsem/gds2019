@@ -11,28 +11,59 @@ public class CombatManager : MonoBehaviour
     private PlayerStats playerStats;
     [SerializeField]
     private float chanceForEnemyToStart = 0.1f;
+    [SerializeField]
+    private Action playerDies;
+    [SerializeField]
+    private Action enemyDies;
+    [SerializeField]
+    private float delay = 1.5f;
+
+    private void Awake()
+    {
+        /*List<Attack> attacks = new List<Attack>()
+        {
+            new Attack(5, 10, 20, "attack 1", ""),
+            new Attack(15, 35, 65, "attack 2", "")
+        };
+        PlayerStats ps = new PlayerStats();
+        ps.Attacks = attacks;
+        ps.Energy = 100;
+
+        Enemy enemy = new Enemy(80, attacks);
+
+
+        this.enemy = enemy;
+        playerStats = ps;*/
+    }
+
+    public CombatManager(PlayerStats playerStats, Enemy enemy, Action playerDies, Action enemyDies)
+    {
+        this.playerStats = playerStats;
+        this.enemy = enemy;
+        this.playerDies = playerDies;
+        this.enemyDies = enemyDies;
+    }
 
     public void Fight()
     {
-        if (UnityEngine.Random.Range(0, 1) <= chanceForEnemyToStart)
+        if (UnityEngine.Random.Range(0.0f, 1.0f) <= chanceForEnemyToStart)
             EnemyAttacks();
-
-        while (playerStats.Energy > 0 && enemy.CanAttack())
-        {
-            PlayerAttacks();
-            if (!enemy.CanAttack())
-                break;
-
-            EnemyAttacks();
-        }
+        else
+            StartCoroutine(PlayerAttacks());
     }
 
-    private void PlayerAttacks()
+    private IEnumerator PlayerAttacks()
     {
-        Attack chosenAttack = ChooseAttack(playerStats.Attacks);
-        int damage = UnityEngine.Random.Range(chosenAttack.lowerRange, chosenAttack.upperRange + 1);
+        List<ExtraTools.MessageButton> messageButtons = new List<ExtraTools.MessageButton>(9);
 
-        enemy.TakeDamage(damage);
+        foreach (Attack attack in playerStats.Attacks)
+        {
+            Attack temp = attack;
+            messageButtons.Add(new ExtraTools.MessageButton(AttackStringFormatter(attack), () => DealDamageToEnemy(temp)));
+        }
+
+        yield return new WaitForSeconds(delay);
+        ExtraTools.PopUp.Instance.Register("Choose your attack:", null, messageButtons.ToArray());
     }
 
     private void EnemyAttacks()
@@ -42,24 +73,40 @@ public class CombatManager : MonoBehaviour
             Action<int> action = PlayerTakesDamage;
             enemy.Attack(action);
         }
+        if (playerStats.Energy > 0)
+            StartCoroutine(PlayerAttacks());
     }
 
     private void PlayerTakesDamage(int damage)
     {
+        Debug.Log($"The enemy dealt {damage} to the player.");
         playerStats.Energy -= damage;
         if (playerStats.Energy <= 0)
-            PlayerDies();
+        {
+            playerDies?.Invoke();
+        }
     }
 
-    private Attack ChooseAttack(List<Attack> attacks)
+    private void DealDamageToEnemy(Attack attack)
     {
-        //TODO
-        Debug.Log("TODO");
-        return attacks[0];
+        int damage = UnityEngine.Random.Range(attack.LowerRange, attack.UpperRange + 1);
+
+        enemy.TakeDamage(damage);
+        if (!enemy.CanAttack())
+        {
+            enemyDies?.Invoke();
+        }
+        else
+            EnemyAttacks();
+
+
+        Debug.Log($"Player dealt {damage} damage to the enemy.");
     }
 
-    private void PlayerDies()
+    private string AttackStringFormatter(Attack attack)
     {
-
+        return $"{attack.Name}   damage: {attack.LowerRange} - {attack.UpperRange}   energy cost: {attack.EnergyCost}";
     }
+
+
 }

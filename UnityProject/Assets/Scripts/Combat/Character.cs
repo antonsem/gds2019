@@ -6,9 +6,13 @@ public abstract class Character : ScriptableObject
 {
     [SerializeField]
     private int maxEnergy;
-    public int energy;
+    [SerializeField]
+    protected int energy;
     [SerializeField]
     protected List<Attack> attacks;
+
+
+    public int Energy { get => energy; set => energy = value; }
 
     public virtual void TakeDamage(int damage)
     {

@@ -50,6 +50,8 @@ namespace ExtraTools
         [SerializeField]
         private GameObject windowPanel;
 
+        
+
         private List<Button> buttons = new List<Button>();
 
         private Queue<Message> messages = new Queue<Message>();
@@ -169,6 +171,11 @@ namespace ExtraTools
             }
             else
                 windowPanel.SetActive(false);
+        }
+
+        public bool IsActive()
+        {
+            return windowPanel.gameObject.activeSelf;
         }
     }
 }
