@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace Constants
 {
+    public static class Variables
+    {
+        public static readonly Vector3 Vector3zero = Vector3.zero;
+    }
+
     public static class Tags
     {
 

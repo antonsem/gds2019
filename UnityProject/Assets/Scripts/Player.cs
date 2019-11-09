@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [MyBox.ReadOnly, SerializeField]
     private Rigidbody rigid;
 
+    private bool interact = false;
     private Vector3 moveDir = Vector3.zero;
     private List<IInteratable> interactables = new List<IInteratable>();
 
@@ -18,6 +19,17 @@ public class Player : MonoBehaviour
     {
         moveDir.x = Input.GetAxisRaw("Horizontal");
         moveDir.z = Input.GetAxisRaw("Vertical");
+
+        interact = Input.GetKeyDown(KeyCode.Space);
+    }
+
+    private void Interact(bool doInteract)
+    {
+        if (doInteract)
+        {
+            foreach (IInteratable interactable in interactables)
+                interactable.Interact();
+        }
     }
 
     private void Move(Vector3 direction)
@@ -28,28 +40,28 @@ public class Player : MonoBehaviour
 
     private void Rotate(Vector3 newRot, float delta)
     {
-        transform.forward = Vector3.Lerp(transform.forward, newRot, delta);
+        if (newRot != Constants.Variables.Vector3zero) //TODO: Fix the rotation bug when forward = -newRot -Anton
+            transform.forward = Vector3.Lerp(transform.forward, newRot, delta);
     }
 
     private void Update()
     {
         GetInput();
         Move(moveDir);
-        if (moveDir != Vector3.zero)
-            Rotate(moveDir, Time.deltaTime * stats.RotationSpeed);
+        Rotate(moveDir, Time.deltaTime * stats.RotationSpeed);
+        Interact(interact);
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.transform.GetComponent(out IInteratable interactable))
-    //    {
-
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.GetComponent(out IInteratable interactable))
+            interactables.Add(interactable);
+    }
 
     private void OnTriggerExit(Collider other)
     {
-        
+        if (other.transform.GetComponent(out IInteratable interactable) && interactables.Contains(interactable))
+            interactables.Remove(interactable);
     }
 
 #if UNITY_EDITOR
