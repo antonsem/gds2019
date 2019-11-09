@@ -44,7 +44,7 @@ public class CombatManager : Singleton<CombatManager>
 
     private IEnumerator PlayerAttacks()
     {
-        List<ExtraTools.MessageButton> messageButtons = new List<ExtraTools.MessageButton>(9);
+        List<MessageButton> messageButtons = new List<MessageButton>(9);
 
         foreach (Attack attack in playerStats.Attacks)
         {
@@ -53,40 +53,54 @@ public class CombatManager : Singleton<CombatManager>
         }
 
         yield return new WaitForSeconds(delay);
-        ExtraTools.PopUp.Instance.Register("Choose your attack:", null, messageButtons.ToArray());
+        PopUp.Instance.Register("Choose your attack:", null, messageButtons.ToArray());
     }
 
     private void EnemyAttacks()
     {
         if (enemy.CanAttack())
         {
-            Action<int> action = PlayerTakesDamage;
+            Action<int, Attack> action = PlayerTakesDamage;
             enemy.Attack(action);
+        }
+        else
+        {
+            Victory();
+            return;
         }
         if (playerStats.Energy > 0)
             StartCoroutine(PlayerAttacks());
     }
 
-    private void PlayerTakesDamage(int damage)
+    private void PlayerTakesDamage(int damage, Attack attack)
     {
         Debug.Log($"The enemy dealt {damage} to the player.");
+
+        PopUp.Instance.Register($"The enemy used {attack.Description}. \nYou took {damage} point(s) of damage.", null);
+
         playerStats.Energy -= damage;
     }
 
     private void DealDamageToEnemy(Attack attack)
     {
         int damage = UnityEngine.Random.Range(attack.LowerRange, attack.UpperRange + 1);
+        Debug.Log($"Player dealt {damage} damage to the enemy.");
+        PopUp.Instance.Register($"The enemy took {damage} point(s) of damage.", null);
 
         enemy.TakeDamage(damage);
         if (!enemy.CanAttack())
         {
             enemyDies?.Invoke();
+            Victory();
         }
         else
             EnemyAttacks();
+    }
 
-
-        Debug.Log($"Player dealt {damage} damage to the enemy.");
+    public void Victory()
+    {
+        MessageButton messageButton = new MessageButton("Go back", TemporarySceneSwitcher.Instance.GetBackFromCombat);
+        PopUp.Instance.Register($"Congratulation, you have successfully defeated your enemy.", null, messageButton);
     }
 
     private string AttackStringFormatter(Attack attack)

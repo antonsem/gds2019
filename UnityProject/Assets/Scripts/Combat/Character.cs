@@ -21,6 +21,7 @@ public abstract class Character : ScriptableObject
     protected virtual void Die()
     {
         Debug.LogError("Not implemented yet. - Die() method", this);
+        //CombatManager.Instance.Victory();
     }
 
     public void RestoreEnergy(int restoredEnergy)

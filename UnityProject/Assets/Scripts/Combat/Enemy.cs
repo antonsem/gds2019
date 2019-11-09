@@ -19,12 +19,12 @@ public class Enemy : Character
         attacks = _attacks;
     }
 
-    public virtual void Attack(Action<int> callback = null)
+    public virtual void Attack(Action<int, Attack> callback = null)
     {
         CoroutineStarter.Instance.StartCoroutine(AttackCoroutine(callback));
     }
 
-    private IEnumerator AttackCoroutine(Action<int> callback)
+    private IEnumerator AttackCoroutine(Action<int, Attack> callback)
     {
         yield return new WaitForSeconds(delay);
         List<Attack> possibleAttacks = attacks.FindAll(x => x.EnergyCost < energy);
@@ -38,7 +38,7 @@ public class Enemy : Character
         energy -= chosenAttack.EnergyCost;
         int damage = UnityEngine.Random.Range(chosenAttack.LowerRange, chosenAttack.UpperRange + 1);
 
-        callback?.Invoke(damage);
+        callback?.Invoke(damage, chosenAttack);
     }
 
     protected override void Die()
@@ -46,6 +46,21 @@ public class Enemy : Character
         canAttack = false;
         base.Die();
     }
+
+    public override void TakeDamage(int damage)
+    {
+        energy -= damage;
+        if (energy <= 0)
+        {
+            Die();
+            return;
+        }
+
+        List<Attack> possibleAttacks = attacks.FindAll(x => x.EnergyCost < energy);
+        if (possibleAttacks.Count == 0)
+            canAttack = false;
+    }
+
 
     private void Surrender()
     {
