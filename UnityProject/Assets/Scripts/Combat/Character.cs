@@ -4,10 +4,13 @@ using UnityEngine;
 
 public abstract class Character : ScriptableObject
 {
+    [SerializeField]
+    private int maxEnergy;
     public int energy;
-    public List<Attack> attacks;
+    [SerializeField]
+    protected List<Attack> attacks;
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         energy -= damage;
         if (energy <= 0)
@@ -17,6 +20,12 @@ public abstract class Character : ScriptableObject
     protected void Die()
     {
         Debug.LogError("Not implemented yet. - Die() method", this);
+    }
+
+    public void RestoreEnergy(int restoredEnergy)
+    {
+        energy += restoredEnergy;
+        energy = Mathf.Min(energy, maxEnergy);
     }
 
 }
