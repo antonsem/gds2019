@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ExtraTools;
+using TMPro;
 
 public class CombatManager : Singleton<CombatManager>
 {

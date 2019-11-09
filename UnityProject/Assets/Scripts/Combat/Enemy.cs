@@ -27,7 +27,7 @@ public class Enemy : Character
     private IEnumerator AttackCoroutine(Action<int, Attack> callback)
     {
         yield return new WaitForSeconds(delay);
-        List<Attack> possibleAttacks = attacks.FindAll(x => x.EnergyCost < energy);
+        List<Attack> possibleAttacks = attacks.FindAll(x => x.EnergyCost < Energy);
         if (possibleAttacks.Count == 0)
         {
             Surrender();
@@ -35,7 +35,7 @@ public class Enemy : Character
         }
 
         Attack chosenAttack = possibleAttacks[UnityEngine.Random.Range(0, possibleAttacks.Count)];
-        energy -= chosenAttack.EnergyCost;
+        Energy -= chosenAttack.EnergyCost;
         int damage = UnityEngine.Random.Range(chosenAttack.LowerRange, chosenAttack.UpperRange + 1);
 
         callback?.Invoke(damage, chosenAttack);
@@ -49,14 +49,14 @@ public class Enemy : Character
 
     public override void TakeDamage(int damage)
     {
-        energy -= damage;
-        if (energy <= 0)
+        Energy -= damage;
+        if (Energy <= 0)
         {
             Die();
             return;
         }
 
-        List<Attack> possibleAttacks = attacks.FindAll(x => x.EnergyCost < energy);
+        List<Attack> possibleAttacks = attacks.FindAll(x => x.EnergyCost < Energy);
         if (possibleAttacks.Count == 0)
             canAttack = false;
     }

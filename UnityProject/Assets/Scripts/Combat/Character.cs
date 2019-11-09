@@ -9,7 +9,17 @@ public abstract class Character : ScriptableObject
     [SerializeField]
     protected int energy;
 
-    public int Energy { get => energy; set => energy = value; }
+    public int Energy
+    {
+        get => energy;
+        //set => { energy = value; Even }
+        set
+        {
+            energy = value;
+            Events.Instance.enemyEnergyUpdated.Invoke(energy);
+        }
+    }
+    public int MaxEnergy { get => maxEnergy; set => maxEnergy = value; }
 
     public virtual void TakeDamage(int damage)
     {
