@@ -14,6 +14,8 @@ public class PlayerStats : ScriptableObject
     [SerializeField]
     private List<Attack> attacks;
     private float rotationSpeed = 25;
+    [SerializeField]
+    private bool canMove = true;
 
     public float Energy { get => energy; set => energy = value; }
     public float MaxEnergy { get => maxEnergy; set => maxEnergy = value; }
@@ -21,5 +23,6 @@ public class PlayerStats : ScriptableObject
     public List<Attack> Attacks { get => attacks; set => attacks = value; }
 
     public float RotationSpeed { get => rotationSpeed; set => rotationSpeed = value; }
+    public bool CanMove { get => canMove; set => canMove = value; }
 
 }
