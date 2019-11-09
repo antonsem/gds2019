@@ -12,7 +12,7 @@ public class Battery : MonoBehaviour, ITrigger
     [SerializeField]
     private Sprite img;
     public bool Additional = false;
-
+ 
     public void Trigger()
     {
         if (Additional)
