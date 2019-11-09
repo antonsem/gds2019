@@ -11,10 +11,13 @@ public class PlayerStats : ScriptableObject
     private float energy = 100;
     [SerializeField]
     private float moveSpeed = 1;
+    [SerializeField]
+    private List<Attack> attacks;
 
     public float Energy { get => energy; set => energy = value; }
     public float MaxEnergy { get => maxEnergy; set => maxEnergy = value; }
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+    public List<Attack> Attacks { get => attacks; set => attacks = value; }
 
 
 }

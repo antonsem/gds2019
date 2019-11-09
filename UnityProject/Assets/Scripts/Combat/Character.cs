@@ -17,7 +17,7 @@ public abstract class Character : ScriptableObject
             Die();
     }
 
-    protected void Die()
+    protected virtual void Die()
     {
         Debug.LogError("Not implemented yet. - Die() method", this);
     }
