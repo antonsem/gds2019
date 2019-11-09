@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using ExtraTools;
 
@@ -25,10 +24,10 @@ public class Player : MonoBehaviour
 
     private void Interact(bool doInteract)
     {
-        if (doInteract)
+        if (doInteract && interactables.Count > 0)
         {
-            foreach (IInteratable interactable in interactables)
-                interactable.Interact();
+            interactables[0].Interact();
+            interactables.Clear();
         }
     }
 
@@ -48,11 +47,15 @@ public class Player : MonoBehaviour
     {
         if (stats.CanMove)
         {
-            GetInput();
-            Move(moveDir);
-            Rotate(moveDir, Time.deltaTime * stats.RotationSpeed);
             Interact(interact);
+            GetInput();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        Move(moveDir);
+        Rotate(moveDir, Time.deltaTime * stats.RotationSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
