@@ -19,7 +19,7 @@ public class SelectedButtonHolder : MonoBehaviour
 
     private void OnDisable()
     {
-        playerStats.CanMove = true;
+        playerStats.CanMove = playerStats.Energy > 0;
         if (lastSelected)
             lastSelected.Select();
     }

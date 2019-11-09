@@ -43,13 +43,22 @@ public class Player : MonoBehaviour
             transform.forward = Vector3.Lerp(transform.forward, newRot, delta);
     }
 
+    private void UpdateResources(float delta)
+    {
+        stats.Energy -= stats.EnergyConsumption * delta;
+    }
+
     private void Update()
     {
         if (stats.CanMove)
         {
-            Interact(interact);
             GetInput();
+            Interact(interact);
+            if (moveDir != Constants.Variables.Vector3zero)
+                UpdateResources(Time.deltaTime);
         }
+        else
+            moveDir = Constants.Variables.Vector3zero;
     }
 
     private void FixedUpdate()
