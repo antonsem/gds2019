@@ -8,9 +8,6 @@ public abstract class Character : ScriptableObject
     private int maxEnergy;
     [SerializeField]
     protected int energy;
-    [SerializeField]
-    protected List<Attack> attacks;
-
 
     public int Energy { get => energy; set => energy = value; }
 

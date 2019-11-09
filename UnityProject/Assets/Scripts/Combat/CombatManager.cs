@@ -2,17 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ExtraTools;
 
-public class CombatManager : MonoBehaviour
+public class CombatManager : Singleton<CombatManager>
 {
-    [SerializeField]
-    private Enemy enemy;
+    public static Enemy enemy;
     [SerializeField]
     private PlayerStats playerStats;
     [SerializeField]
     private float chanceForEnemyToStart = 0.1f;
-    [SerializeField]
-    private Action playerDies;
     [SerializeField]
     private Action enemyDies;
     [SerializeField]
@@ -34,14 +32,6 @@ public class CombatManager : MonoBehaviour
 
         this.enemy = enemy;
         playerStats = ps;*/
-    }
-
-    public CombatManager(PlayerStats playerStats, Enemy enemy, Action playerDies, Action enemyDies)
-    {
-        this.playerStats = playerStats;
-        this.enemy = enemy;
-        this.playerDies = playerDies;
-        this.enemyDies = enemyDies;
     }
 
     public void Fight()
@@ -81,10 +71,6 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log($"The enemy dealt {damage} to the player.");
         playerStats.Energy -= damage;
-        if (playerStats.Energy <= 0)
-        {
-            playerDies?.Invoke();
-        }
     }
 
     private void DealDamageToEnemy(Attack attack)

@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Enemy", menuName = "GDS/Enemy")]
 public class Enemy : Character
 {
     [SerializeField]
     private float delay = 1;
     [SerializeField]
     private bool canAttack = true;
+    [SerializeField]
+    private List<Attack> attacks = new List<Attack>();
 
     public Enemy(int _energy, List<Attack> _attacks)
     {
@@ -16,17 +19,12 @@ public class Enemy : Character
         attacks = _attacks;
     }
 
-    void Awake()
-    {
-        attacks = new List<Attack>();
-    }
-
     public virtual void Attack(Action<int> callback = null)
     {
         CoroutineStarter.Instance.StartCoroutine(AttackCoroutine(callback));
     }
 
-    private IEnumerator AttackCoroutine (Action<int> callback)
+    private IEnumerator AttackCoroutine(Action<int> callback)
     {
         yield return new WaitForSeconds(delay);
         List<Attack> possibleAttacks = attacks.FindAll(x => x.EnergyCost < energy);
