@@ -13,10 +13,13 @@ public class PlayerStats : ScriptableObject
     private float moveSpeed = 1;
     [SerializeField]
     private float rotationSpeed = 25;
+    [SerializeField]
+    private bool canMove = true;
 
     public float Energy { get => energy; set => energy = value; }
     public float MaxEnergy { get => maxEnergy; set => maxEnergy = value; }
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public float RotationSpeed { get => rotationSpeed; set => rotationSpeed = value; }
+    public bool CanMove { get => canMove; set => canMove = value; }
 
 }

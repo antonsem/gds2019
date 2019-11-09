@@ -6,6 +6,6 @@ public class Crate : MonoBehaviour, IInteratable
 {
     public void Interact()
     {
-        Debug.LogFormat("A very interesting {0}!", name);
+        ExtraTools.PopUp.Instance.Register(string.Format("A very interesting {0}!", name), null, new ExtraTools.MessageButton("OK! :D", null), new ExtraTools.MessageButton("But is it though?", null));
     }
 }

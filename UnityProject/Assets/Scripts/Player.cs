@@ -46,10 +46,13 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        GetInput();
-        Move(moveDir);
-        Rotate(moveDir, Time.deltaTime * stats.RotationSpeed);
-        Interact(interact);
+        if (stats.CanMove)
+        {
+            GetInput();
+            Move(moveDir);
+            Rotate(moveDir, Time.deltaTime * stats.RotationSpeed);
+            Interact(interact);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
