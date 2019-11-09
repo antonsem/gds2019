@@ -15,3 +15,6 @@ MonoBehaviour:
   maxEnergy: 100
   energy: 100
   moveSpeed: 10
+  rotationSpeed: 25
+  canMove: 1
+  energyDrainingSpeed: 1

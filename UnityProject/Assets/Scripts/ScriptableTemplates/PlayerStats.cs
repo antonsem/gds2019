@@ -18,7 +18,17 @@ public class PlayerStats : ScriptableObject
     [SerializeField]
     private float energyDrainingSpeed = 1;
 
-    public float Energy { get => energy; set => energy = value; }
+    public float Energy
+    {
+        get => energy;
+        set
+        {
+            if (value <= 0)
+                Events.Instance.gameOver.Invoke();
+
+            energy = Mathf.Clamp(value, 0, MaxEnergy);
+        }
+    }
     public float MaxEnergy { get => maxEnergy; set => maxEnergy = value; }
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public float RotationSpeed { get => rotationSpeed; set => rotationSpeed = value; }
