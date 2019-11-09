@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerStats", menuName = "GDS/Player Stats")]
-public class PlayerStats : ScriptableObject
+public class PlayerStats : ScriptableObject, ISerializationCallbackReceiver
 {
     [SerializeField]
     private float maxEnergy = 100;
@@ -13,6 +13,7 @@ public class PlayerStats : ScriptableObject
     private float moveSpeed = 1;
     [SerializeField]
     private List<Attack> attacks;
+    [SerializeField]
     private float rotationSpeed = 25;
     [SerializeField]
     private bool canMove = true;
@@ -78,4 +79,16 @@ public class PlayerStats : ScriptableObject
         EnergyConsumption = drainingSpeed;
     }
 
+    public void OnAfterDeserialize()
+    {
+        energy = MaxEnergy;
+        companions.Clear();
+        canMove = true;
+        energyConsumption = 1;
+        baseEnergyConsumption = 1;
+    }
+
+    public void OnBeforeSerialize()
+    {
+    }
 }

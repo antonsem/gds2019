@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c5269681def0f47915c8a6c660248c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 09fb8930e16136f4297c6fad9b86b2c1, type: 2}
+  stats: {fileID: 11400000, guid: 03993f5bc5e1e424893dd52c8f2fcce2, type: 2}
   batteryIndicator: {fileID: 1492827537308271165}
 --- !u!1 &1492827537308271166
 GameObject:
