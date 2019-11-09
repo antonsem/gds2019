@@ -10,6 +10,12 @@ public class Enemy : Character
     [SerializeField]
     private bool canAttack = true;
 
+    public Enemy(int _energy, List<Attack> _attacks)
+    {
+        Energy = _energy;
+        attacks = _attacks;
+    }
+
     void Awake()
     {
         attacks = new List<Attack>();
@@ -23,7 +29,7 @@ public class Enemy : Character
     private IEnumerator AttackCoroutine (Action<int> callback)
     {
         yield return new WaitForSeconds(delay);
-        List<Attack> possibleAttacks = attacks.FindAll(x => x.energyCost < energy);
+        List<Attack> possibleAttacks = attacks.FindAll(x => x.EnergyCost < energy);
         if (possibleAttacks.Count == 0)
         {
             Surrender();
@@ -31,8 +37,8 @@ public class Enemy : Character
         }
 
         Attack chosenAttack = possibleAttacks[UnityEngine.Random.Range(0, possibleAttacks.Count)];
-        energy -= chosenAttack.energyCost;
-        int damage = UnityEngine.Random.Range(chosenAttack.lowerRange, chosenAttack.upperRange + 1);
+        energy -= chosenAttack.EnergyCost;
+        int damage = UnityEngine.Random.Range(chosenAttack.LowerRange, chosenAttack.UpperRange + 1);
 
         callback?.Invoke(damage);
     }
