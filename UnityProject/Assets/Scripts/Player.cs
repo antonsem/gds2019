@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
     private void UpdateResources(float delta)
     {
-        stats.Energy -= stats.EnergyDrainingSpeed * delta;
+        stats.Energy -= stats.EnergyConsumption * delta;
     }
 
     private void Update()
