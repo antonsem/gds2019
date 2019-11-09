@@ -13,6 +13,7 @@ public class Baddy : MonoBehaviour, IInteratable
         PopUp.Instance.Register("Come at me bruh!", null, new MessageButton("Nah...", null), new MessageButton("You asked for it bruh!", DoFight));
     }
 
+   
     private void DoFight()
     {
         CombatManager.enemy = enemy;
