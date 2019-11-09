@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c34ba1d91542b9d44a4aff14aae3ec90, type: 3}
-  m_Name: PlayerStats
+  m_Script: {fileID: 11500000, guid: e38c2425df2500f4c8d30d64868c020f, type: 3}
+  m_Name: Companion
   m_EditorClassIdentifier: 
-  maxEnergy: 100
-  energy: 70.138084
-  moveSpeed: 10
-  attacks: []
-  canMove: 1
-  energyConsumption: 1
-  baseEnergyConsumption: 1
-  companions: []
+  _name: Friendly Friend
+  image: {fileID: 0}
+  energyConsupmtion: 50
