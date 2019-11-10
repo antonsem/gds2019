@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using ExtraTools;
 
 public class GameManager : Singleton<GameManager>
@@ -14,7 +15,7 @@ public class GameManager : Singleton<GameManager>
     private void GameOver()
     {
         playerStats.CanMove = false;
-
+        SceneManager.LoadScene("Died");
         PopUp.Instance.Register("You died in a very, very horrible way!");
     }
 }
