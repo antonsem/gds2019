@@ -11,7 +11,8 @@ public class Baddy : MonoBehaviour, IInteratable
     private GameObject visual;
     [SerializeField]
     private Sprite img;
-
+    [SerializeField]
+    bool small = false;
     private AudioSource audio;
     private void Start()
     {
@@ -34,8 +35,13 @@ public class Baddy : MonoBehaviour, IInteratable
     IEnumerator InteractDelay(float sec)
     {
         yield return new WaitForSeconds(sec);
-        PopUp.Instance.Register("What do you want ?? Civilians have no access here! Go away.", img, new MessageButton("Ok I am leaving take it easy.", null), new MessageButton("LEt me pass!", letmePass));
-    }
+        if (small)
+        { PopUp.Instance.Register("Dont even try to get close !! I will smash you!!.. or at least your wheels..!", img, new MessageButton("Ok little one try it!", DoFight), new MessageButton("Ok you look scaaaaary I am leaving", null)); }
+        else
+        {
+            PopUp.Instance.Register("What do you want ?? Civilians have no access here! Go away.", img, new MessageButton("Ok I am leaving take it easy.", null), new MessageButton("LEt me pass!", letmePass));
+        }
+        }
 
     private void letmePass()
     {
@@ -46,10 +52,9 @@ public class Baddy : MonoBehaviour, IInteratable
         CombatManager.enemy = enemy;
         CombatManager.enemyVisual = visual;
         TemporarySceneSwitcher.Instance.SwitchToCombat();
-        CombatManager.Instance.Fight(Lose);
+        CombatManager.Instance.Fight(dest);
     }
-
-    public void Lose()
+    void dest()
     {
         Destroy(gameObject);
     }

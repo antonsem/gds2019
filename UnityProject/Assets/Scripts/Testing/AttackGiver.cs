@@ -42,7 +42,8 @@ public class AttackGiver : MonoBehaviour, IInteratable
 
     public void Yes()
     {
-        playerStats.Attacks.Add(betterAttack);
+        if(!playerStats.Attacks.Contains(betterAttack))
+            playerStats.Attacks.Add(betterAttack);
         playerStats.Energy -= 20;
         PopUp.Instance.Register("New attack learned.", null);
         Destroy(gameObject);
@@ -54,7 +55,8 @@ public class AttackGiver : MonoBehaviour, IInteratable
 
     public void Haggle()
     {
-        playerStats.Attacks.Add(worseAttack);
+        if(!playerStats.Attacks.Contains(worseAttack))
+            playerStats.Attacks.Add(worseAttack);
         playerStats.Energy -= 15;
         PopUp.Instance.Register("I think I yan do it for 15. \nNew attack learned.", null);
         Destroy(gameObject);

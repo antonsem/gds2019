@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34ba1d91542b9d44a4aff14aae3ec90, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  maxEnergy: 100
-  energy: 100
+  maxEnergy: 105
+  energy: 105
   moveSpeed: 5
   attacks:
   - {fileID: 11400000, guid: 12b2450a72d582f4380642d422e76649, type: 2}
@@ -22,3 +22,4 @@ MonoBehaviour:
   energyConsumption: 1
   baseEnergyConsumption: 1
   companions: []
+  card: 1
