@@ -13,6 +13,8 @@ public class Baddy : MonoBehaviour, IInteratable
     private Sprite img;
     [SerializeField]
     bool small = false;
+    [SerializeField]
+    private PlayerStats stats;
 
     Enemy backup;
     private AudioSource audio;
@@ -23,6 +25,7 @@ public class Baddy : MonoBehaviour, IInteratable
     }
     public void Interact()
     {
+        stats.CanMove = false;
         if (audio != null)
         {
             audio.PlayOneShot(audio.clip);

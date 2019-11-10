@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7cadbb7db715c459d45f23020d3ee3, type: 3}
   m_Name: Attack low
   m_EditorClassIdentifier: 
-  energyCost: 2
+  energyCost: 1
   lowerRange: 1
   upperRange: 2
   _name: Weak Punch!

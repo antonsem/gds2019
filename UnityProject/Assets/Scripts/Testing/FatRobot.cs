@@ -5,16 +5,20 @@ using ExtraTools;
 
 public class FatRobot : MonoBehaviour, IInteratable
 {
-   
-
     private AudioSource audio;
+    [SerializeField]
+    private PlayerStats stats;
 
+    [SerializeField]
+    Sprite sprt;
     private void Start()
     {
         audio = GetComponent<AudioSource>();
     }
     public void Interact()
     {
+
+        stats.CanMove = false;
         if (audio != null)
         {
             audio.PlayOneShot(audio.clip);

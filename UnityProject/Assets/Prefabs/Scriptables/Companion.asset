@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Companion
   m_EditorClassIdentifier: 
   _name: Friendly Friend
-  image: {fileID: 0}
+  image: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  attacks: []
   energyConsupmtion: 50
+  energyBonus: 10

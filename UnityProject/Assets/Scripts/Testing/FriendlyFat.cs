@@ -18,6 +18,7 @@ public class FriendlyFat : MonoBehaviour,IInteratable
 
     public void Interact()
     {
+        stats.CanMove = false;
         if (audio != null)
         {
             audio.PlayOneShot(audio.clip);

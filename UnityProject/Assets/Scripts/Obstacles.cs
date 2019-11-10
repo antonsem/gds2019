@@ -6,7 +6,8 @@ using UnityEngine;
 public class Obstacles : MonoBehaviour,ITrigger
 {
 
-   
+    [SerializeField]
+    Sprite spr;
 
     public void Trigger()
     {

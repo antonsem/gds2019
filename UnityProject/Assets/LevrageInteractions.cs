@@ -16,6 +16,7 @@ public class LevrageInteractions : MonoBehaviour, IInteratable
     }
     public void Interact()
     {
+        stats.CanMove = false;
         if (audioSource != null)
         {
             audioSource.PlayOneShot(audioSource.clip);
