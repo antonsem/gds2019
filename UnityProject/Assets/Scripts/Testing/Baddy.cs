@@ -56,6 +56,6 @@ public class Baddy : MonoBehaviour, IInteratable
     }
     void dest()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
