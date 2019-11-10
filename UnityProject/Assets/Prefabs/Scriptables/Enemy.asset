@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Enemy
   m_EditorClassIdentifier: 
   maxEnergy: 20
-  energy: -10
+  energy: 40
   delay: 1
-  canAttack: 0
+  canAttack: 1
   attacks:
   - {fileID: 11400000, guid: 12b2450a72d582f4380642d422e76649, type: 2}
