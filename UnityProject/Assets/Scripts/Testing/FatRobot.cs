@@ -29,22 +29,22 @@ public class FatRobot : MonoBehaviour, IInteratable
     IEnumerator InteractDelay(float sec)
     {
         yield return new WaitForSeconds(sec);
-        PopUp.Instance.Register("What?", null, new MessageButton("Sir, could you please move a little bit ?", gentleResponse), new MessageButton("Move your fat ass! You are blocking the road!", rudeResponse));
+        PopUp.Instance.Register("What?", null, new MessageButton("Sir, could you please move a little bit?", gentleResponse), new MessageButton("Move your fat ass! You are blocking the road!", rudeResponse));
     }
 
     public void gentleResponse()
     {
-        PopUp.Instance.Register("Why so in rush?", null, new MessageButton("I am looking for a puppy!", puppy), new MessageButton("Not of your bussiness! Just move your ass!", rudeResponse));
+        PopUp.Instance.Register("Why so in rush?", null, new MessageButton("I am looking for a puppy!", puppy), new MessageButton("None of your bussiness! Just move your ass!", rudeResponse));
     }
     public void rudeResponse()
     {
-        PopUp.Instance.Register("OK! ok.. ok..I am moving.. dont need to be rude!", null);
+        PopUp.Instance.Register("OK! ok… ok… I am moving… dont need to be rude!", null);
         gameObject.SetActive(false);
     }
 
     public void puppy()
     {
-        PopUp.Instance.Register("Oh really? I head the rummors too, but honestly dont belive it. But I will move away for you ;)", null);
+        PopUp.Instance.Register("Oh really? I head the rummors too, but honestly I don't belive it. But I will move away for you.", null);
         gameObject.SetActive(false);
     }
 

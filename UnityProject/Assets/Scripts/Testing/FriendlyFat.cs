@@ -37,7 +37,7 @@ public class FriendlyFat : MonoBehaviour,IInteratable
             if (!talkedBefore)
             {
                 PopUp.Instance.Register("Oh hi! How are you? What are you doing here?", null,
-                    new MessageButton("Hi there! I'm ona very important quest, that concerns puppies!", gentleResponse),
+                    new MessageButton("Hi there! I'm on a very important quest, that concerns puppies!", gentleResponse),
                     new MessageButton("None of your business!", rudeResponse));
             }
             else
@@ -50,15 +50,15 @@ public class FriendlyFat : MonoBehaviour,IInteratable
         }
         else
         {
-            PopUp.Instance.Register("It't none of my business");
+            PopUp.Instance.Register("It's none of my business");
         }
     }
 
     public void gentleResponse()
     {
-        PopUp.Instance.Register("Oh really? That is so cool! I love puppies! Can I join you? You will need to carry me though... But I can upgrade your battery by 10, and I can assist you in battle!", null,
+        PopUp.Instance.Register("Oh really? That is so cool! I love puppies! Can I join you? You will need to carry me though… But I can upgrade your battery by 10, and I can assist you in battle!", null,
                 new MessageButton("Sure, hop on!", GentleResponse_2),
-                new MessageButton("Hmm... Let me think abou it.", LetMeThink),
+                new MessageButton("Hmm… Let me think abou it.", LetMeThink),
                 new MessageButton("NO! Why whould I want that?", RudeResponse_2));
     }
 
@@ -71,7 +71,7 @@ public class FriendlyFat : MonoBehaviour,IInteratable
 
     private void LetMeThink()
     {
-        PopUp.Instance.Register("OK, ket me know when you make up your mind.");
+        PopUp.Instance.Register("OK, let me know when you make up your mind.");
         talkedBefore = true;
     }
 
