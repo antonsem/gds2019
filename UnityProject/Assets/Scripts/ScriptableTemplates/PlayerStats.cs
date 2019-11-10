@@ -24,6 +24,8 @@ public class PlayerStats : ScriptableObject, ISerializationCallbackReceiver
     [SerializeField]
     private List<Companion> companions = new List<Companion>();
 
+    public bool card = false;
+
     public float Energy
     {
         get => energy;

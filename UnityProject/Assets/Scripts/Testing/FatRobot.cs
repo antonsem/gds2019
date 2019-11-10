@@ -15,8 +15,15 @@ public class FatRobot : MonoBehaviour, IInteratable
     }
     public void Interact()
     {
-        audio.PlayOneShot(audio.clip);
-        StartCoroutine(InteractDelay(audio.clip.length));
+        if (audio != null)
+        {
+            audio.PlayOneShot(audio.clip);
+            StartCoroutine(InteractDelay(audio.clip.length));
+        }
+        else
+        {
+            StartCoroutine(InteractDelay(0));
+        }
     }
 
     IEnumerator InteractDelay(float sec)

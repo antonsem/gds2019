@@ -29,6 +29,7 @@ public class Battery : MonoBehaviour, ITrigger
                 audioSource.PlayOneShot(audioSource.clip);
                 StartCoroutine(destroyDelay(audioSource.clip.length - 0.5f));
                 GetComponent<BoxCollider>().enabled = false;
+                transform.GetChild(0).gameObject.SetActive(false);
             }
             else
             {
