@@ -13,10 +13,12 @@ public class Baddy : MonoBehaviour, IInteratable
     private Sprite img;
     [SerializeField]
     bool small = false;
+
+    Enemy backup;
     private AudioSource audio;
     private void Start()
     {
-
+         backup = enemy;
         audio = GetComponent<AudioSource>();
     }
     public void Interact()
@@ -56,6 +58,7 @@ public class Baddy : MonoBehaviour, IInteratable
     }
     void dest()
     {
+        enemy = backup;
         gameObject.SetActive(false);
     }
 }
