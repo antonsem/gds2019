@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+using System.Collections;
 
 namespace ExtraTools
 {
@@ -50,11 +52,11 @@ namespace ExtraTools
         [SerializeField]
         private GameObject windowPanel;
 
-        
-
         private List<Button> buttons = new List<Button>();
 
         private Queue<Message> messages = new Queue<Message>();
+
+        private float checkTimer = 1;
 
         /// <summary>
         /// Creates and adds a message to the queue
@@ -108,13 +110,17 @@ namespace ExtraTools
                 btn.onClick.AddListener(ClearButtons);
                 btn.onClick.AddListener(CheckMessages);
                 btn.Select();
+                StartCoroutine(SelectContinueButtonLater(btn.gameObject));
             }
             else
             {
                 Button temp = null;
+                Button selectThis = null;
                 foreach (MessageButton btn in msg.buttons)
                 {
                     temp = GetButton();
+                    if (selectThis == null)
+                        selectThis = temp;
                     if (btn.buttonAction != null)
                         temp.onClick.AddListener(btn.buttonAction);
                     temp.onClick.AddListener(ClearButtons);
@@ -122,8 +128,27 @@ namespace ExtraTools
                     temp.GetComponentInChildren<TextMeshProUGUI>().text = btn.buttonText;
                 }
 
-                temp.Select();
+                selectThis.Select();
+                StartCoroutine(SelectContinueButtonLater(selectThis.gameObject));
             }
+        }
+
+        private IEnumerator SelectContinueButtonLater(GameObject obj)
+        {
+            yield return null;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(obj);
+        }
+
+        private void Update()
+        {
+            if(checkTimer <= 0 && !EventSystem.current.currentSelectedGameObject && buttons.Count > 0)
+            {
+                checkTimer = 1;
+                buttons[0].Select();
+                StartCoroutine(SelectContinueButtonLater(buttons[0].gameObject));
+            }
+            checkTimer -= Time.deltaTime;
         }
 
         /// <summary>
