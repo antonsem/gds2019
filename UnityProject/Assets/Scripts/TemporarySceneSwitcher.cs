@@ -38,7 +38,7 @@ public class TemporarySceneSwitcher : Singleton<TemporarySceneSwitcher>
             obj.SetActive(false);
 
         SceneManager.sceneLoaded += CombatSceneLoaded;
-        SceneManager.LoadScene("Combat", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Combat scene", LoadSceneMode.Additive);
     }
 
     public void GetBackFromCombat()
