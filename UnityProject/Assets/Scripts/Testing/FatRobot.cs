@@ -5,9 +5,9 @@ using ExtraTools;
 
 public class FatRobot : MonoBehaviour, IInteratable
 {
-   
-
     private AudioSource audio;
+    [SerializeField]
+    private PlayerStats stats;
 
     private void Start()
     {
@@ -15,6 +15,8 @@ public class FatRobot : MonoBehaviour, IInteratable
     }
     public void Interact()
     {
+
+        stats.CanMove = false;
         if (audio != null)
         {
             audio.PlayOneShot(audio.clip);
