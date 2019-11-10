@@ -11,12 +11,20 @@ public class Baddy : MonoBehaviour, IInteratable
     private AudioSource audio;
     private void Start()
     {
+
         audio = GetComponent<AudioSource>();
     }
     public void Interact()
     {
-        audio.PlayOneShot(audio.clip);
-        StartCoroutine(InteractDelay(audio.clip.length));
+        if (audio != null)
+        {
+            audio.PlayOneShot(audio.clip);
+            StartCoroutine(InteractDelay(audio.clip.length));
+        }
+        else
+        {
+            StartCoroutine(InteractDelay(0));
+        }
     }
 
     IEnumerator InteractDelay(float sec)

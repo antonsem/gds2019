@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -971,6 +971,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5328546923399840000, guid: eef748acbaf6bac438cfe635d80a71b9,
+        type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 03993f5bc5e1e424893dd52c8f2fcce2,
+        type: 2}
     - target: {fileID: 5894990079654608066, guid: eef748acbaf6bac438cfe635d80a71b9,
         type: 3}
       propertyPath: m_IsActive
@@ -1338,6 +1344,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1492827536455688619, guid: 4e2256cfee34fe145ac69d6030e12b4c,
+        type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 03993f5bc5e1e424893dd52c8f2fcce2,
+        type: 2}
     - target: {fileID: 1492827536455688623, guid: 4e2256cfee34fe145ac69d6030e12b4c,
         type: 3}
       propertyPath: m_LocalPosition.x
