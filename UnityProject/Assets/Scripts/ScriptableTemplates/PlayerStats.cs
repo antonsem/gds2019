@@ -54,6 +54,7 @@ public class PlayerStats : ScriptableObject, ISerializationCallbackReceiver
         if (!Companions.Contains(_companion))
         {
             Companions.Add(_companion);
+            Attacks.AddRange(_companion.Attacks);
             RecalculateEnergyConsuption();
         }
         else
@@ -65,6 +66,14 @@ public class PlayerStats : ScriptableObject, ISerializationCallbackReceiver
         if (Companions.Contains(_companion))
         {
             Companions.Remove(_companion);
+            foreach (Attack attack in _companion.Attacks)
+            {
+                for (int i = 0; i < Attacks.Count; i++)
+                {
+                    if (Attacks[i] == attack)
+                        Attacks.RemoveAt(i);
+                }
+            }
             RecalculateEnergyConsuption();
         }
         else
