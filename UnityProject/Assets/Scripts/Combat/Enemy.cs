@@ -30,7 +30,6 @@ public class Enemy : Character
         List<Attack> possibleAttacks = attacks.FindAll(x => x.EnergyCost < Energy);
         if (possibleAttacks.Count == 0)
         {
-            Surrender();
             yield break;
         }
 
@@ -43,7 +42,6 @@ public class Enemy : Character
 
     protected override void Die()
     {
-        canAttack = false;
         base.Die();
     }
 
@@ -55,17 +53,6 @@ public class Enemy : Character
             Die();
             return;
         }
-
-        List<Attack> possibleAttacks = attacks.FindAll(x => x.EnergyCost < Energy);
-        if (possibleAttacks.Count == 0)
-            canAttack = false;
-    }
-
-
-    private void Surrender()
-    {
-        canAttack = false;
-        Debug.LogError("Not implemented yet. - Surrender() method", this);
     }
 
     public bool CanAttack()

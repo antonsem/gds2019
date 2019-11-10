@@ -19,7 +19,7 @@ public class CombatTester : MonoBehaviour
 
         Enemy enemy = new Enemy(80, attacks);
 
-        cm.Fight();
+        cm.Fight(null);
     }
 
     // Update is called once per frame

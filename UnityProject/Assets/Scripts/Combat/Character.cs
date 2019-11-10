@@ -30,22 +30,21 @@ public abstract class Character : ScriptableObject, ISerializationCallbackReceiv
 
     protected virtual void Die()
     {
-        Debug.LogError("Not implemented yet. - Die() method", this);
-        //CombatManager.Instance.Victory();
+
     }
 
-    public void RestoreEnergy(int restoredEnergy)
+    /*public void RestoreEnergy(int restoredEnergy)
     {
         energy += restoredEnergy;
         energy = Mathf.Min(energy, maxEnergy);
-    }
+    }*/
 
     public void OnBeforeSerialize()
     {
-        energy = maxEnergy;
     }
 
     public void OnAfterDeserialize()
     {
+        energy = maxEnergy;
     }
 }
