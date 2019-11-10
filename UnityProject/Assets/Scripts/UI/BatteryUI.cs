@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class BatteryUI : MonoBehaviour
 {
@@ -9,6 +8,9 @@ public class BatteryUI : MonoBehaviour
     private PlayerStats stats;
     [SerializeField]
     private TextMeshProUGUI batteryIndicator;
+    [SerializeField]
+    private Slider energyLevel;
+
 
     private void OnEnable()
     {
@@ -24,5 +26,6 @@ public class BatteryUI : MonoBehaviour
     private void BatteryLevelUpdated(float level)
     {
         batteryIndicator.text = string.Format("{0} / {1}", stats.Energy.ToString("0."), stats.MaxEnergy.ToString("0."));
+        energyLevel.value = stats.Energy / stats.MaxEnergy;
     }
 }
