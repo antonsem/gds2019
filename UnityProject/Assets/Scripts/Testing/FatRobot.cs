@@ -39,13 +39,13 @@ public class FatRobot : MonoBehaviour, IInteratable
     public void rudeResponse()
     {
         PopUp.Instance.Register("OK! ok.. ok..I am moving.. dont need to be rude!", null);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void puppy()
     {
         PopUp.Instance.Register("Oh really? I head the rummors too, but honestly dont belive it. But I will move away for you ;)", null);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 

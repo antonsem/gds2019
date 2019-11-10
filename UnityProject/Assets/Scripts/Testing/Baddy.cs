@@ -9,6 +9,8 @@ public class Baddy : MonoBehaviour, IInteratable
     private Enemy enemy;
     [SerializeField]
     private GameObject visual;
+    [SerializeField]
+    private Sprite img;
 
     private AudioSource audio;
     private void Start()
@@ -32,7 +34,12 @@ public class Baddy : MonoBehaviour, IInteratable
     IEnumerator InteractDelay(float sec)
     {
         yield return new WaitForSeconds(sec);
-        PopUp.Instance.Register("Come at me bruh!", null, new MessageButton("Nah...", null), new MessageButton("You asked for it bruh!", DoFight));
+        PopUp.Instance.Register("What do you want ?? Civilians have no access here! Go away.", img, new MessageButton("Ok I am leaving take it easy.", null), new MessageButton("LEt me pass!", letmePass));
+    }
+
+    private void letmePass()
+    {
+        PopUp.Instance.Register("You? No way get out! Or I will crush you!", img, new MessageButton("Ok I am leaving take it easy.", null), new MessageButton("TRY IT!!!", DoFight));
     }
     private void DoFight()
     {
