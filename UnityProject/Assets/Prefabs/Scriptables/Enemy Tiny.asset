@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f3336a0e1eb774a8c0a9bef6625a35, type: 3}
+  m_Name: Enemy Tiny
+  m_EditorClassIdentifier: 
+  maxEnergy: 10
+  energy: 10
+  delay: 1
+  canAttack: 1
+  attacks:
+  - {fileID: 11400000, guid: 364a22ac114e14d4287592bb51792223, type: 2}
