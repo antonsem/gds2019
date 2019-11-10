@@ -13,9 +13,12 @@ public class Companion : ScriptableObject
 
     [SerializeField]
     private float energyConsupmtion = 1;
+    [SerializeField]
+    private float energyBonus = 10;
 
     public string Name { get => _name; }
     public float EnergyConsumption { get => energyConsupmtion; set => energyConsupmtion = value; }
     public Sprite Image { get => image; }
     public List<Attack> Attacks { get => attacks; }
+    public float EnergyBonus { get => energyBonus; }
 }

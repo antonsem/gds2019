@@ -55,6 +55,7 @@ public class PlayerStats : ScriptableObject, ISerializationCallbackReceiver
         {
             Companions.Add(_companion);
             Attacks.AddRange(_companion.Attacks);
+            MaxEnergy += _companion.EnergyBonus;
             RecalculateEnergyConsuption();
         }
         else
@@ -66,6 +67,7 @@ public class PlayerStats : ScriptableObject, ISerializationCallbackReceiver
         if (Companions.Contains(_companion))
         {
             Companions.Remove(_companion);
+            MaxEnergy -= _companion.EnergyBonus;
             foreach (Attack attack in _companion.Attacks)
             {
                 for (int i = 0; i < Attacks.Count; i++)
