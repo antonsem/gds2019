@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class EnemyEnergyUI : MonoBehaviour
@@ -8,6 +7,8 @@ public class EnemyEnergyUI : MonoBehaviour
     private Enemy enemy;
     [SerializeField]
     private TextMeshProUGUI energyIndicator;
+    [SerializeField]
+    private Slider energyLevel;
 
     private void OnEnable()
     {
@@ -25,6 +26,7 @@ public class EnemyEnergyUI : MonoBehaviour
     private void BatteryLevelUpdated(int level)
     {
         energyIndicator.text = string.Format("{0} / {1}", enemy.Energy.ToString(), enemy.MaxEnergy.ToString());
+        energyLevel.value = enemy.Energy / enemy.MaxEnergy;
     }
 
 }
