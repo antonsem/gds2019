@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7cadbb7db715c459d45f23020d3ee3, type: 3}
   m_Name: Attack
   m_EditorClassIdentifier: 
-  energyCost: 5
-  lowerRange: 10
-  upperRange: 15
+  energyCost: 4
+  lowerRange: 8
+  upperRange: 12
   _name: Faruconu punch!
   description: dasd

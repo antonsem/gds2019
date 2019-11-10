@@ -46,6 +46,11 @@ public class Baddy : MonoBehaviour, IInteratable
         CombatManager.enemy = enemy;
         CombatManager.enemyVisual = visual;
         TemporarySceneSwitcher.Instance.SwitchToCombat();
-        CombatManager.Instance.Fight();
+        CombatManager.Instance.Fight(Lose);
+    }
+
+    public void Lose()
+    {
+        Destroy(gameObject);
     }
 }

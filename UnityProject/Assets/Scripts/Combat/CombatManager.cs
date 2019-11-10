@@ -18,6 +18,8 @@ public class CombatManager : Singleton<CombatManager>
     [SerializeField]
     private float delay = 1.5f;
 
+    private Action fightEnded;
+
     private void Awake()
     {
         /*List<Attack> attacks = new List<Attack>()
@@ -36,8 +38,10 @@ public class CombatManager : Singleton<CombatManager>
         playerStats = ps;*/
     }
 
-    public void Fight()
+    public void Fight(Action fightEnded)
     {
+        this.fightEnded = fightEnded;
+
         if (UnityEngine.Random.Range(0.0f, 1.0f) <= chanceForEnemyToStart)
             EnemyAttacks();
         else
@@ -102,7 +106,13 @@ public class CombatManager : Singleton<CombatManager>
     public void Victory()
     {
         MessageButton messageButton = new MessageButton("Go back", TemporarySceneSwitcher.Instance.GetBackFromCombat);
-        PopUp.Instance.Register($"Congratulation, you have successfully defeated your enemy.", null, messageButton);
+        string message = "";
+        if (enemy.Energy > 0)
+            message = "The enemy has low energy and surrenders! Victory!";
+        else
+            message = "Congratulation, you have successfully defeated your enemy.";
+            PopUp.Instance.Register(message, null, messageButton);
+        fightEnded?.Invoke();
     }
 
     private string AttackStringFormatter(Attack attack)

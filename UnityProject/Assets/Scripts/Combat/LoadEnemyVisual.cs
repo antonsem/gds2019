@@ -8,6 +8,7 @@ public class LoadEnemyVisual : MonoBehaviour
     {
         GameObject go = Instantiate(CombatManager.enemyVisual);
         go.transform.position = new Vector3(0, 0, 0);
+        go.transform.rotation = Quaternion.Euler(180, 0, 0);
         go.transform.parent = this.transform;
     }
 }
