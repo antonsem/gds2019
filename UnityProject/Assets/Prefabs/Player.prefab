@@ -5098,6 +5098,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot
       objectReference: {fileID: 0}
+    - target: {fileID: 2076942312830697731, guid: 1216399a8179ae04cb339df3f6e51c74,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de6b65a989d41994782fce0356f50b2a, type: 2}
     - target: {fileID: 3715197711500334527, guid: 1216399a8179ae04cb339df3f6e51c74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5163,6 +5168,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.6064515
       objectReference: {fileID: 0}
+    - target: {fileID: 6689325691652366198, guid: 1216399a8179ae04cb339df3f6e51c74,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de6b65a989d41994782fce0356f50b2a, type: 2}
     - target: {fileID: 9140686497189998925, guid: 1216399a8179ae04cb339df3f6e51c74,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy
   m_EditorClassIdentifier: 
   maxEnergy: 20
-  energy: -10
+  energy: 40
   delay: 1
   canAttack: 0
   attacks:

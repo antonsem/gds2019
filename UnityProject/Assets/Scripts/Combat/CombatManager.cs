@@ -7,6 +7,7 @@ using TMPro;
 
 public class CombatManager : Singleton<CombatManager>
 {
+    public static GameObject enemyVisual;
     public static Enemy enemy;
     [SerializeField]
     private PlayerStats playerStats;
@@ -50,7 +51,7 @@ public class CombatManager : Singleton<CombatManager>
         foreach (Attack attack in playerStats.Attacks)
         {
             Attack temp = attack;
-            messageButtons.Add(new ExtraTools.MessageButton(AttackStringFormatter(attack), () => DealDamageToEnemy(temp)));
+            messageButtons.Add(new MessageButton(AttackStringFormatter(attack), () => DealDamageToEnemy(temp)));
         }
 
         yield return new WaitForSeconds(delay);
@@ -77,7 +78,7 @@ public class CombatManager : Singleton<CombatManager>
     {
         Debug.Log($"The enemy dealt {damage} to the player.");
 
-        PopUp.Instance.Register($"The enemy used {attack.Description}. \nYou took {damage} point(s) of damage.", null);
+        PopUp.Instance.Register($"The enemy used {attack.Name}. \nYou took {damage} point(s) of damage.", null);
 
         playerStats.Energy -= damage;
     }
