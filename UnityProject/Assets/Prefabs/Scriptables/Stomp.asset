@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7cadbb7db715c459d45f23020d3ee3, type: 3}
   m_Name: Stomp
   m_EditorClassIdentifier: 
-  energyCost: 0
-  lowerRange: 0
-  upperRange: 0
-  _name: 
+  energyCost: 5
+  lowerRange: 14
+  upperRange: 15
+  _name: Stomp
   description: 

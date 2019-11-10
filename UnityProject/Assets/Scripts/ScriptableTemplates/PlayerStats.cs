@@ -12,6 +12,8 @@ public class PlayerStats : ScriptableObject, ISerializationCallbackReceiver
     [SerializeField]
     private float moveSpeed = 1;
     [SerializeField]
+    private Attack defaultAttack;
+    [SerializeField]
     private List<Attack> attacks;
     [SerializeField]
     private float rotationSpeed = 25;
@@ -99,6 +101,7 @@ public class PlayerStats : ScriptableObject, ISerializationCallbackReceiver
         canMove = true;
         energyConsumption = 1;
         baseEnergyConsumption = 1;
+        attacks = new List<Attack>() { defaultAttack };
     }
 
     public void OnBeforeSerialize()
