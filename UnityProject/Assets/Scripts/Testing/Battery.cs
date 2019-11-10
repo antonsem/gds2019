@@ -12,7 +12,7 @@ public class Battery : MonoBehaviour, ITrigger
     [SerializeField]
     private Sprite img;
     public bool Additional = false;
-
+    bool called = false;
     AudioSource audioSource;
 
     private void Start()
@@ -21,29 +21,34 @@ public class Battery : MonoBehaviour, ITrigger
     }
     public void Trigger()
     {
-        if (Additional)
+        if (!called)
         {
-            PopUp.Instance.Register("You found the additional BATTERY!! This bad boy gives you additional capacity of " + AdditionalCapacity + " Energy!!", img);
-            
-            playerStats.MaxEnergy += AdditionalCapacity;
+            called = true;
+            if (audioSource != null)
+            {
+                audioSource.PlayOneShot(audioSource.clip);
+                StartCoroutine(destroyDelay(audioSource.clip.length - 0.5f));
+                GetComponent<BoxCollider>().enabled = false;
+            }
+            else
+            {
+                StartCoroutine(destroyDelay(0));
+            }
+            if (Additional)
+            {
+                PopUp.Instance.Register("You found the additional BATTERY!! This bad boy gives you additional capacity of " + AdditionalCapacity + " Energy!!", img);
 
-        }
-        else
-        {
-            PopUp.Instance.Register("You found the BATTERY!! You recharged " + AdditionalCapacity + "  Eneregy!!", img);
-        }
+                playerStats.MaxEnergy += AdditionalCapacity;
 
-        if (audioSource != null)
-        {
-            audioSource.PlayOneShot(audioSource.clip);
-            StartCoroutine(destroyDelay(audioSource.clip.length));
+            }
+            else
+            {
+                PopUp.Instance.Register("You found the BATTERY!! You recharged " + AdditionalCapacity + "  Eneregy!!", img);
+            }
+
+
+            playerStats.Energy += AdditionalCapacity;
         }
-        else
-        {
-            StartCoroutine(destroyDelay(0));
-        }
-        playerStats.Energy += AdditionalCapacity;
-        
       
     }
     IEnumerator destroyDelay(float sec)
