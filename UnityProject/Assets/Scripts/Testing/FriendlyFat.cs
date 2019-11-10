@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class FriendlyFat : MonoBehaviour
+public class FriendlyFat : MonoBehaviour,IInteratable
 {
     [SerializeField]
     private AudioSource audio;
