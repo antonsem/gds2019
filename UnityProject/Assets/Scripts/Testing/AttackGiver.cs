@@ -19,6 +19,7 @@ public class AttackGiver : MonoBehaviour, IInteratable
     }
     public void Interact()
     {
+        playerStats.CanMove = false;
         if (audio != null)
         {
             audio.PlayOneShot(audio.clip);
