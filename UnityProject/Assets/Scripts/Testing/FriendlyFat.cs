@@ -45,7 +45,7 @@ public class FriendlyFat : MonoBehaviour,IInteratable
                 PopUp.Instance.Register("So did you though about my offer? I can upgrade your battery by 10, and I can assist you in battle, but I will drain some of your enegry as we travel.", null,
                     new MessageButton("Not yet, I need some more time", LetMeThink),
                     new MessageButton("Sure, hop on!", GentleResponse_2),
-                    new MessageButton("NO! Why whould I want that?", rudeResponse));
+                    new MessageButton("NO! Why whould I want that?", RudeResponse_2));
             }
         }
         else
@@ -59,13 +59,14 @@ public class FriendlyFat : MonoBehaviour,IInteratable
         PopUp.Instance.Register("Oh really? That is so cool! I love puppies! Can I join you? You will need to carry me though... But I can upgrade your battery by 10, and I can assist you in battle!", null,
                 new MessageButton("Sure, hop on!", GentleResponse_2),
                 new MessageButton("Hmm... Let me think abou it.", LetMeThink),
-                new MessageButton("NO! Why whould I want that?", rudeResponse));
+                new MessageButton("NO! Why whould I want that?", RudeResponse_2));
     }
 
     private void GentleResponse_2()
     {
         PopUp.Instance.Register("Wow! That is awesome! Thank you very much!");
         stats.AddCompanion(companion);
+        gameObject.SetActive(false);
     }
 
     private void LetMeThink()
@@ -84,11 +85,5 @@ public class FriendlyFat : MonoBehaviour,IInteratable
     {
         PopUp.Instance.Register("As you wish. It seems like we won't get along anyway. And it is none of my busness after all.");
         wantToTalk = false;
-    }
-
-    public void puppy()
-    {
-        PopUp.Instance.Register("Oh really? I head the rummors too, but honestly dont belive it. But I will move away for you ;)", null);
-        gameObject.SetActive(false);
     }
 }

@@ -15,6 +15,7 @@ MonoBehaviour:
   maxEnergy: 70
   energy: 70
   moveSpeed: 5
+  defaultAttack: {fileID: 11400000, guid: 364a22ac114e14d4287592bb51792223, type: 2}
   attacks:
   - {fileID: 11400000, guid: 364a22ac114e14d4287592bb51792223, type: 2}
   rotationSpeed: 25
