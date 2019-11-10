@@ -70,6 +70,7 @@ public class Enemy : Character
 
     public bool CanAttack()
     {
-        return canAttack;
+        List<Attack> possibleAttacks = attacks.FindAll(x => x.EnergyCost < Energy);
+        return (possibleAttacks.Count > 0) && (Energy > 0);
     }
 }
