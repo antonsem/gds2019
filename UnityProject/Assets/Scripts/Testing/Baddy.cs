@@ -15,6 +15,8 @@ public class Baddy : MonoBehaviour, IInteratable
     bool small = false;
     [SerializeField]
     private PlayerStats stats;
+    [SerializeField]
+    bool big = false;
 
     Enemy backup;
     private AudioSource audio;
@@ -40,6 +42,11 @@ public class Baddy : MonoBehaviour, IInteratable
     IEnumerator InteractDelay(float sec)
     {
         yield return new WaitForSeconds(sec);
+        if (big)
+        {
+            PopUp.Instance.Register("HAHAH!!! YOU WANT TO CHALLANGE ME?!?!?", img, new MessageButton("YES!", DoFight), new MessageButton("NO I change my mind.", null));
+        }
+        else
         if (small)
         { PopUp.Instance.Register("Dont even try to get close !! I will smash you!!.. or at least your wheels..!", img, new MessageButton("Ok little one try it!", DoFight), new MessageButton("Ok you look scaaaaary I am leaving", null)); }
         else
