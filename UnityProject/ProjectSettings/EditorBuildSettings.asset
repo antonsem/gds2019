@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VisualTest.unity
     guid: 76bb8193be7c5c04ea73c68da05ba749
+  - enabled: 1
+    path: Assets/Scenes/Combat scene.unity
+    guid: b31fbe65ff5bb914997122ec16241170
   m_configObjects: {}

@@ -7,6 +7,8 @@ public class Baddy : MonoBehaviour, IInteratable
 {
     [SerializeField]
     private Enemy enemy;
+    [SerializeField]
+    private GameObject visual;
 
     private AudioSource audio;
     private void Start()
@@ -35,6 +37,7 @@ public class Baddy : MonoBehaviour, IInteratable
     private void DoFight()
     {
         CombatManager.enemy = enemy;
+        CombatManager.enemyVisual = visual;
         TemporarySceneSwitcher.Instance.SwitchToCombat();
         CombatManager.Instance.Fight();
     }
