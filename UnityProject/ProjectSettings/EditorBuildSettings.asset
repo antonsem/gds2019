@@ -5,16 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/PlayerMovementTest.unity
-    guid: 807a88f48aa177c4da37c2efbc3846ae
-  - enabled: 1
-    path: Assets/Scenes/Combat scene.unity
-    guid: b31fbe65ff5bb914997122ec16241170
-  - enabled: 1
-    path: Assets/Scenes/Terain scene.unity
-    guid: da2dc9463b548cf4ba620b4241f2ab20
+    path: Assets/Scenes/VisualTest.unity
+    guid: 76bb8193be7c5c04ea73c68da05ba749
   m_configObjects: {}
