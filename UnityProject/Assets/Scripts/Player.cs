@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using ExtraTools;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
@@ -9,6 +10,8 @@ public class Player : MonoBehaviour
     private PlayerStats stats;
     [MyBox.ReadOnly, SerializeField]
     private Rigidbody rigid;
+    [SerializeField]
+    private TextMeshProUGUI interactUI;
 
     private bool interact = false;
     private Vector3 moveDir = Vector3.zero;
@@ -28,6 +31,7 @@ public class Player : MonoBehaviour
         {
             interactables[0].Interact();
             interactables.Clear();
+            interactUI?.gameObject.SetActive(false);
         }
     }
 
@@ -70,7 +74,10 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.GetComponent(out IInteratable interactable))
+        {
             interactables.Add(interactable);
+            interactUI?.gameObject.SetActive(true);
+        }
 
         if (other.transform.GetComponent(out ITrigger trigger))
         {
@@ -82,7 +89,11 @@ public class Player : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.transform.GetComponent(out IInteratable interactable) && interactables.Contains(interactable))
+        {
             interactables.Remove(interactable);
+            if (interactables.Count == 0)
+                interactUI?.gameObject.SetActive(false);
+        }
     }
 
 #if UNITY_EDITOR
