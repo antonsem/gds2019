@@ -46,4 +46,26 @@ public class TemporarySceneSwitcher : Singleton<TemporarySceneSwitcher>
         SceneManager.sceneUnloaded += CombatSceneUnloaded;
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
     }
+
+    public void SwitchToGame()
+    {
+        SceneManager.GetActiveScene().GetRootGameObjects(objectsToDisable);
+
+        foreach (var obj in ignore)
+            objectsToDisable.Remove(obj);
+
+        objectsToDisable.Remove(gameObject);
+
+        foreach (GameObject obj in objectsToDisable)
+            obj.SetActive(false);
+
+        SceneManager.sceneLoaded += GameLoaded;
+        SceneManager.LoadScene("Terain scene", LoadSceneMode.Single);
+    }
+
+    private void GameLoaded(Scene scene, LoadSceneMode arg1)
+    {
+        SceneManager.sceneLoaded -= GameLoaded;
+        SceneManager.SetActiveScene(scene);
+    }
 }

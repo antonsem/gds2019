@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Combat scene.unity
     guid: b31fbe65ff5bb914997122ec16241170
+  - enabled: 1
+    path: Assets/Scenes/Terain scene.unity
+    guid: da2dc9463b548cf4ba620b4241f2ab20
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 512c283896d881c4d9dc2d83919dfd5d
   m_configObjects: {}
