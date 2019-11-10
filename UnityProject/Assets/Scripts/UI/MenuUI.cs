@@ -14,8 +14,6 @@ public class MenuUI : MonoBehaviour
     private Button exitButton;
     [SerializeField]
     private GameObject credits;
-    [SerializeField]
-    private TextMeshProUGUI title;
 
     private void Awake()
     {
@@ -26,7 +24,6 @@ public class MenuUI : MonoBehaviour
 
     private void OnPlay()
     {
-        title.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
         TemporarySceneSwitcher.Instance.SwitchToGame();
     }
