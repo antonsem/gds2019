@@ -26,7 +26,7 @@ public class EnemyEnergyUI : MonoBehaviour
     private void BatteryLevelUpdated(int level)
     {
         energyIndicator.text = string.Format("{0} / {1}", enemy.Energy.ToString(), enemy.MaxEnergy.ToString());
-        energyLevel.value = enemy.Energy / enemy.MaxEnergy;
+        energyLevel.value = (float)enemy.Energy / enemy.MaxEnergy;
     }
 
 }
