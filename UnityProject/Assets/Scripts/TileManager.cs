@@ -78,7 +78,7 @@ public class TileManager : MonoBehaviour
         while (i < 1.0f)
         {
             i += Time.deltaTime * speed;
-            thisTransform.localPosition = Vector3.Lerp(startPos, endPos, i);
+            thisTransform.localPosition = Berp(startPos, endPos, i);
             thisTransform.localRotation = Quaternion.Lerp(startRotation, endRotation, i);
        
             // Debug.Log(thisTransform.localPosition + " Pos");
@@ -86,5 +86,15 @@ public class TileManager : MonoBehaviour
         }
         thisTransform.gameObject.SetActive(finalState);
 
+    }
+    public  Vector3 Berp(Vector3 start, Vector3 end, float value)
+    {
+        return new Vector3(Berp(start.x, end.x, value), Berp(start.y, end.y, value), Berp(start.z, end.z, value));
+    }
+    public static float Berp(float start, float end, float value)
+    {
+        value = Mathf.Clamp01(value);
+        value = (Mathf.Sin(value * Mathf.PI * (0.2f + 2.5f * value * value * value)) * Mathf.Pow(1f - value, 2.2f) + value) * (1f + (1.2f * (1f - value)));
+        return start + (end - start) * value;
     }
 }
