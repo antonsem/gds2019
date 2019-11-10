@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Puppy : MonoBehaviour, IInteratable
 {
@@ -28,6 +29,6 @@ public class Puppy : MonoBehaviour, IInteratable
     {
         yield return new WaitForSeconds(sec);
         PopUp.Instance.Register("YOU DID IT! YOU MANAGED TO SAVE THE PUPPY!!! YOU ARE THE LEGEND!", null,
-            new MessageButton("YEY!", null));
+            new MessageButton("YEY!", () => { SceneManager.LoadScene("GameOver"); }));
     }
 }
