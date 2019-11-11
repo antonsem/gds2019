@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34ba1d91542b9d44a4aff14aae3ec90, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  maxEnergy: 100
-  energy: 100
+  maxEnergy: 250
+  energy: 250
   moveSpeed: 5
   defaultAttack: {fileID: 11400000, guid: 364a22ac114e14d4287592bb51792223, type: 2}
   attacks:

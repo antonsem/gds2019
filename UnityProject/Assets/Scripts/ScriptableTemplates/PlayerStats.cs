@@ -101,6 +101,7 @@ public class PlayerStats : ScriptableObject, ISerializationCallbackReceiver
         energyConsumption = 1;
         baseEnergyConsumption = 1;
         attacks = new List<Attack>() { defaultAttack };
+        card = false;
     }
 
     public void OnBeforeSerialize()

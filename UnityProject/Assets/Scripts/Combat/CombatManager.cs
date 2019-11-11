@@ -92,7 +92,7 @@ public class CombatManager : Singleton<CombatManager>
         int damage = UnityEngine.Random.Range(attack.LowerRange, attack.UpperRange + 1);
         Debug.Log($"Player dealt {damage} damage to the enemy.");
         PopUp.Instance.Register($"The enemy took {damage} point(s) of damage.", null);
-
+        playerStats.Energy -= attack.EnergyCost;
         enemy.TakeDamage(damage);
         if (!enemy.CanAttack())
         {
