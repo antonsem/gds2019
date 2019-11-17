@@ -3,7 +3,27 @@ guid: 0f5db494016a7074f89baf408474839b
 ModelImporter:
   serializedVersion: 29
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Enemy_Tire_01
+    second: {fileID: 2100000, guid: 73dc94295f5342c9fb9dba226923fbfc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Enemy_paint_01
+    second: {fileID: 2100000, guid: 16547c34d9c937c69a45e081061cb39c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Enemy_paint_02
+    second: {fileID: 2100000, guid: 165f06a872ea9937fa04376c889f798b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #13
+    second: {fileID: 2100000, guid: 5daa153a71cb8bd3cb42b861120d523a, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -39,10 +59,10 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

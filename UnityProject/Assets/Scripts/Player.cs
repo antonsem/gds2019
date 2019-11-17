@@ -80,10 +80,7 @@ public class Player : MonoBehaviour
         }
 
         if (other.transform.GetComponent(out ITrigger trigger))
-        {
-            Debug.Log("TRIGGER");
             trigger.Trigger();
-        }
     }
 
     private void OnTriggerExit(Collider other)

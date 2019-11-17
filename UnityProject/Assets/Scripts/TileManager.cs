@@ -41,16 +41,8 @@ public class TileManager : MonoBehaviour
         }
     }
 
-    // Move to the target end position.
-    void Update()
-    {
-
-    }
-
-
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger enter");
         Tile.gameObject.SetActive(true);
         if (currentCorutine != null)
         {

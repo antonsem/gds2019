@@ -3,7 +3,17 @@ guid: 03dd31821ced2c34e8292ffe6b4c6b1b
 ModelImporter:
   serializedVersion: 29
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lever_paint_01
+    second: {fileID: 2100000, guid: 8d6ae0f76039fe70b87f36c7c9927348, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lever_paint_02
+    second: {fileID: 2100000, guid: dba2be9890dbb10a5ad867d8a145d544, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -39,10 +49,10 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

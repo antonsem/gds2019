@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8609166083004186152, guid: 0f5db494016a7074f89baf408474839b, type: 3}
+  - {fileID: 2100000, guid: 16547c34d9c937c69a45e081061cb39c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,6 +149,7 @@ MonoBehaviour:
   img: {fileID: 21300000, guid: b5a7c8842066f1f4fafb4d47a770c6e3, type: 3}
   small: 0
   stats: {fileID: 11400000, guid: 03993f5bc5e1e424893dd52c8f2fcce2, type: 2}
+  big: 0
 --- !u!82 &8467620989148860531
 AudioSource:
   m_ObjectHideFlags: 0
@@ -322,7 +323,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8565602215650883727, guid: 0f5db494016a7074f89baf408474839b, type: 3}
+  - {fileID: 2100000, guid: 165f06a872ea9937fa04376c889f798b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -402,7 +403,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6956346110756291915, guid: 0f5db494016a7074f89baf408474839b, type: 3}
+  - {fileID: 2100000, guid: 73dc94295f5342c9fb9dba226923fbfc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -482,8 +483,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6436591170870349062, guid: 0f5db494016a7074f89baf408474839b, type: 3}
-  - {fileID: -8609166083004186152, guid: 0f5db494016a7074f89baf408474839b, type: 3}
+  - {fileID: 2100000, guid: 5daa153a71cb8bd3cb42b861120d523a, type: 2}
+  - {fileID: 2100000, guid: 16547c34d9c937c69a45e081061cb39c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -563,7 +564,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8565602215650883727, guid: 0f5db494016a7074f89baf408474839b, type: 3}
+  - {fileID: 2100000, guid: 165f06a872ea9937fa04376c889f798b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
